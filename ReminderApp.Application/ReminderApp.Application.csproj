@@ -6,4 +6,14 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Common\Exceptions\" />
+    <Folder Include="MappingProfiles\" />
+    <Folder Include="Abstractions\" />
+    <Folder Include="Reminders\Commands\" />
+    <Folder Include="Reminders\Dtos\" />
+    <Folder Include="Reminders\Queries\" />
+    <Folder Include="Repositories\" />
+  </ItemGroup>
+
 </Project>
