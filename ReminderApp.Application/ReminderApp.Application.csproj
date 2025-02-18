@@ -10,10 +10,16 @@
     <Folder Include="Common\Exceptions\" />
     <Folder Include="MappingProfiles\" />
     <Folder Include="Abstractions\" />
-    <Folder Include="Reminders\Commands\" />
     <Folder Include="Reminders\Dtos\" />
     <Folder Include="Reminders\Queries\" />
-    <Folder Include="Repositories\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.4.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ReminderApp.Domain\ReminderApp.Domain.csproj" />
   </ItemGroup>
 
 </Project>
