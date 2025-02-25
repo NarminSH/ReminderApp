@@ -1,7 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using ReminderApp.Application.Abstractions;
+using ReminderApp.Application.Repositories;
 using ReminderApp.Infrastructure.Persistence;
+using ReminderApp.Infrastructure.Repositories.Implementations;
+using ReminderApp.Infrastructure.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +21,14 @@ namespace ReminderApp.Infrastructure
             serviceCollection.AddDbContext<ReminderAppDbContext>(options =>
                    options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
                        builder => builder.MigrationsAssembly(typeof(ReminderAppDbContext).Assembly.FullName)));
+            serviceCollection.AddScoped<IUnitOfWork, UnitOfWork>();
+            serviceCollection.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            serviceCollection.AddScoped<IReminderRepository, ReminderRepository>();
+            serviceCollection.AddSingleton<IMessageService, EmailService>();
+            serviceCollection.AddSingleton<IEmailService, EmailService>();
+            serviceCollection.AddSingleton<IMessageService, TelegramService>();
+            serviceCollection.AddSingleton<ITelegramService, TelegramService>();
+            
             return serviceCollection;
         }
     }

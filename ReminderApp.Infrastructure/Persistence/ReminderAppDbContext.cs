@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ReminderApp.Application.Repositories;
 using ReminderApp.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ReminderApp.Infrastructure.Persistence
 {
-    public class ReminderAppDbContext: DbContext
+    public class ReminderAppDbContext: DbContext, IUnitOfWork
     {
         public ReminderAppDbContext(DbContextOptions<ReminderAppDbContext> options): base(options)
         {

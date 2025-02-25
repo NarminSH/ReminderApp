@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ReminderApp.Application\ReminderApp.Application.csproj" />
     <ProjectReference Include="..\ReminderApp.Domain\ReminderApp.Domain.csproj" />
   </ItemGroup>
 

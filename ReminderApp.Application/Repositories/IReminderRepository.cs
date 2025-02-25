@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ReminderApp.Application.Repositories
 {
-    public  interface IReminderRepository: IRepository<Reminder>
+    public  interface IReminderRepository: IGenericRepository<Reminder>
     {
     }
     
