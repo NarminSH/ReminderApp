@@ -1,11 +1,11 @@
 using FluentValidation.AspNetCore;
+using Hangfire;
 using ReminderApp.Application;
 using ReminderApp.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddFluentValidationAutoValidation(configuration => configuration.DisableDataAnnotationsValidation = false)
@@ -27,7 +27,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
-
+// Use Hangfire dashboard (optional)
+app.UseHangfireDashboard("/hangfire");
 app.MapControllers();
 
 app.Run();

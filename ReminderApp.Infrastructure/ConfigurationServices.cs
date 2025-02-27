@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Hangfire;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ReminderApp.Application.Abstractions;
@@ -21,6 +22,15 @@ namespace ReminderApp.Infrastructure
             serviceCollection.AddDbContext<ReminderAppDbContext>(options =>
                    options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
                        builder => builder.MigrationsAssembly(typeof(ReminderAppDbContext).Assembly.FullName)));
+           
+            serviceCollection.AddHangfire(config =>
+                config.UseSqlServerStorage(configuration.GetConnectionString("DefaultConnection")));
+
+           
+            serviceCollection.AddHangfireServer();
+            serviceCollection.AddScoped<IReminderScheduler, ReminderScheduler>();
+
+
             serviceCollection.AddScoped<IUnitOfWork, UnitOfWork>();
             serviceCollection.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             serviceCollection.AddScoped<IReminderRepository, ReminderRepository>();

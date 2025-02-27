@@ -25,8 +25,47 @@ namespace ReminderApp.Infrastructure.Services
             var mailMessage = new MailMessage
             {
                 From = new MailAddress(_configuration["EmailSettings:FromAddress"]),
-                Body = content,
-                IsBodyHtml = true 
+                Subject = "Reminder!",
+                Body = $@"
+        <html>
+        <head>
+            <style>
+                body {{
+                    font-family: Arial, sans-serif;
+                    color: #333;
+                    background-color: #f9f9f9;
+                    margin: 0;
+                    padding: 0;
+                }}
+                .email-container {{
+                    width: 100%;
+                    max-width: 600px;
+                    margin: 20px auto;
+                    padding: 20px;
+                    background-color: #ffffff;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                }}
+                h1 {{
+                    color: #0056b3;
+                    font-size: 24px;
+                }}
+                p {{
+                    font-size: 16px;
+                    line-height: 1.5;
+                    color: #555555;
+                }}
+            </style>
+        </head>
+        <body>
+            <div class='email-container'>
+                <h1>Reminder Notification</h1>
+                <p>{content}</p>
+            </div>
+        </body>
+        </html>
+    ",
+                IsBodyHtml = true
             };
 
             mailMessage.To.Add(to);

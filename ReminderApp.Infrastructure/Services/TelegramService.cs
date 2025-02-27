@@ -9,11 +9,11 @@ namespace ReminderApp.Infrastructure.Services
 {
     public class TelegramService : ITelegramService
     {
-        private readonly string _telegramBotToken;
+       
 
-        public TelegramService(string telegramBotToken)
+        public TelegramService()
         {
-            _telegramBotToken = telegramBotToken;
+           
         }
 
 

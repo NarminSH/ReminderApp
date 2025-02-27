@@ -1,4 +1,5 @@
 ﻿using MediatR;
+
 using ReminderApp.Application.Abstractions;
 using ReminderApp.Application.Factories.Interfaces;
 using ReminderApp.Application.Repositories;
@@ -14,26 +15,29 @@ namespace ReminderApp.Application.Reminders.Commands.CreateReminder
 {
     public sealed class CreateReminderCommandHandler: IRequestHandler<CreateReminderCommand, Guid>
     {
-        private readonly IMessageServiceFactory _messageServiceFactory;
+       
         private readonly IReminderRepository _reminderRepository;
         private readonly IUnitOfWork  _unitOfWork;
+        private readonly IReminderScheduler _reminderScheduler; 
 
-
-        public CreateReminderCommandHandler(IReminderRepository reminderRepository, IUnitOfWork unitOfWork, IMessageServiceFactory messageServiceFactory)
+        public CreateReminderCommandHandler(IReminderRepository reminderRepository, IUnitOfWork unitOfWork, 
+            IReminderScheduler reminderScheduler)
         {
             _reminderRepository = reminderRepository;
             _unitOfWork = unitOfWork;
-            _messageServiceFactory = messageServiceFactory;
+            _reminderScheduler = reminderScheduler;
         }
 
         public async Task<Guid> Handle(CreateReminderCommand request, CancellationToken cancellationToken)
         {
-
-            var reminder = new Reminder(Guid.NewGuid(), request.to, request.content, request.sendAt, request.methodType);
+            var localSendAt = request.sendAt;
+            var userTimeZoneOffset = request.TimeZoneOffset;  // Offset in minutes (handled by front in js)
+            var utcSendAt = localSendAt.AddMinutes(-userTimeZoneOffset);  // Convert to UTC
+            var reminder = new Reminder(Guid.NewGuid(), request.to, request.content, utcSendAt, request.methodType);
             await _reminderRepository.AddAsync(reminder);
             await _unitOfWork.SaveChangesAsync(cancellationToken);
-            IMessageService messageSender = _messageServiceFactory.GetMessageService(request.methodType.ToString());
-            await messageSender.SendReminderAsync(request.to, request.content);
+            await _reminderScheduler.ScheduleReminderAsync(request.to, request.content, utcSendAt, request.methodType.ToString());
+
             return reminder.Id;
         }
     }

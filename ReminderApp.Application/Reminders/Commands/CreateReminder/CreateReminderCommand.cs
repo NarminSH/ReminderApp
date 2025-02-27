@@ -11,7 +11,7 @@ using System.Windows.Input;
 namespace ReminderApp.Application.Reminders.Commands.CreateReminder
 {
     public record CreateReminderCommand(string to, string content, DateTime sendAt,
-            ReminderMethodType methodType): IRequest<Guid>;
+            ReminderMethodType methodType, int TimeZoneOffset ): IRequest<Guid>;
 
 
 }
