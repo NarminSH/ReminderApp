@@ -32,7 +32,7 @@ namespace ReminderApp.Application.Reminders.Commands.CreateReminder
         {
             var localSendAt = request.sendAt;
             var userTimeZoneOffset = request.TimeZoneOffset;  // Offset in minutes (handled by front in js)
-            var utcSendAt = localSendAt.AddMinutes(-userTimeZoneOffset);  // Convert to UTC
+            var utcSendAt = localSendAt.AddMinutes(-userTimeZoneOffset);  
             var reminder = new Reminder(Guid.NewGuid(), request.to, request.content, utcSendAt, request.methodType);
             await _reminderRepository.AddAsync(reminder);
             await _unitOfWork.SaveChangesAsync(cancellationToken);

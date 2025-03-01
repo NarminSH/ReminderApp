@@ -37,7 +37,7 @@ namespace ReminderApp.Application.Reminders.Commands.CreateReminder
             if (IsValidEmail(to))
                 return IsValidEmail(to);
 
-            bool isValidTelegramId = Regex.IsMatch(to, @"^@[a-zA-Z0-9_]+$");
+            bool isValidTelegramId = Regex.IsMatch(to, @"^-?\d+$");
             return isValidTelegramId;
         }
         private bool IsValidEmail(string email)

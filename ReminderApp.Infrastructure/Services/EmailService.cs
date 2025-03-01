@@ -72,7 +72,7 @@ namespace ReminderApp.Infrastructure.Services
 
             using (var smtpClient = new SmtpClient(_configuration["EmailSettings:Host"], Convert.ToInt32(_configuration["EmailSettings:Port"])))
             {
-                smtpClient.Credentials = new NetworkCredential(_configuration["EmailSettings:Login"], _configuration["EmailSettings:Passcode"]);
+                smtpClient.Credentials = new NetworkCredential(_configuration["REMINDERAPP_EMAIL_LOGIN"], _configuration["REMINDERAPP_EMAIL_PASSCODE"]);
                 smtpClient.EnableSsl = true; 
                 await smtpClient.SendMailAsync(mailMessage);
             }
