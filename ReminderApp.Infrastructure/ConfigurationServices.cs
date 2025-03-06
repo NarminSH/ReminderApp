@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using ReminderApp.Application.Abstractions;
 using ReminderApp.Application.Repositories;
 using ReminderApp.Infrastructure.Persistence;
@@ -17,7 +18,26 @@ namespace ReminderApp.Infrastructure
 {
     public static class ConfigurationServices
     {
-        public static IServiceCollection AddInfrastructureServices(this IServiceCollection serviceCollection, IConfiguration configuration)
+       
+            public static void ApplyMigrations(this IHost app)
+            {
+                using (var scope = app.Services.CreateScope())
+                {
+                    var services = scope.ServiceProvider;
+                    try
+                    {
+                        var context = services.GetRequiredService<ReminderAppDbContext>();
+                        context.Database.Migrate();
+                        Console.WriteLine("Database migrations applied successfully.");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"An error occurred while applying migrations: {ex.Message}");
+                        throw;
+                    }
+                }
+            }
+            public static IServiceCollection AddInfrastructureServices(this IServiceCollection serviceCollection, IConfiguration configuration)
         {
             serviceCollection.AddDbContext<ReminderAppDbContext>(options =>
                    options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"),

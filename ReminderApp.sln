@@ -7,13 +7,22 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6628EB19-6BD
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{3061B521-39F9-44EA-AD3C-7C73947774F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReminderApp.Domain", "ReminderApp.Domain\ReminderApp.Domain.csproj", "{10E90205-979A-4EF2-886B-DD6486E1F4D1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReminderApp.Domain", "ReminderApp.Domain\ReminderApp.Domain.csproj", "{10E90205-979A-4EF2-886B-DD6486E1F4D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReminderApp.Infrastructure", "ReminderApp.Infrastructure\ReminderApp.Infrastructure.csproj", "{EB5FFA20-B918-411A-895B-120FC40452FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReminderApp.Infrastructure", "ReminderApp.Infrastructure\ReminderApp.Infrastructure.csproj", "{EB5FFA20-B918-411A-895B-120FC40452FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReminderApp.Application", "ReminderApp.Application\ReminderApp.Application.csproj", "{35D61F25-AC6E-4C18-9A7B-1166353BA8F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReminderApp.Application", "ReminderApp.Application\ReminderApp.Application.csproj", "{35D61F25-AC6E-4C18-9A7B-1166353BA8F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReminderApp.WebAPI", "ReminderApp.WebAPI\ReminderApp.WebAPI.csproj", "{3F39C75F-6D84-4E79-809E-ABFA2BF822DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReminderApp.WebAPI", "ReminderApp.WebAPI\ReminderApp.WebAPI.csproj", "{3F39C75F-6D84-4E79-809E-ABFA2BF822DD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReminderApp.Tests.Data", "tests\ReminderApp.Tests.Data\ReminderApp.Tests.Data.csproj", "{3E716EB7-B035-4486-9999-BEF67F0AC688}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReminderApp.Tests.Unit", "tests\ReminderApp.Tests.Unit\ReminderApp.Tests.Unit.csproj", "{092B1876-7845-4799-AC33-BDE0FF14D8E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3FA1E7C2-0074-43CD-9F49-1C7A52BEB106}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +46,14 @@ Global
 		{3F39C75F-6D84-4E79-809E-ABFA2BF822DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F39C75F-6D84-4E79-809E-ABFA2BF822DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F39C75F-6D84-4E79-809E-ABFA2BF822DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E716EB7-B035-4486-9999-BEF67F0AC688}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E716EB7-B035-4486-9999-BEF67F0AC688}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E716EB7-B035-4486-9999-BEF67F0AC688}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E716EB7-B035-4486-9999-BEF67F0AC688}.Release|Any CPU.Build.0 = Release|Any CPU
+		{092B1876-7845-4799-AC33-BDE0FF14D8E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{092B1876-7845-4799-AC33-BDE0FF14D8E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{092B1876-7845-4799-AC33-BDE0FF14D8E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{092B1876-7845-4799-AC33-BDE0FF14D8E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,6 +63,8 @@ Global
 		{EB5FFA20-B918-411A-895B-120FC40452FC} = {6628EB19-6BDA-40EE-9695-5E2879001701}
 		{35D61F25-AC6E-4C18-9A7B-1166353BA8F4} = {6628EB19-6BDA-40EE-9695-5E2879001701}
 		{3F39C75F-6D84-4E79-809E-ABFA2BF822DD} = {6628EB19-6BDA-40EE-9695-5E2879001701}
+		{3E716EB7-B035-4486-9999-BEF67F0AC688} = {3061B521-39F9-44EA-AD3C-7C73947774F5}
+		{092B1876-7845-4799-AC33-BDE0FF14D8E8} = {3061B521-39F9-44EA-AD3C-7C73947774F5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A0F39064-C755-4213-B46A-C4762827DB01}

@@ -1,7 +1,9 @@
 using FluentValidation.AspNetCore;
 using Hangfire;
+using Microsoft.EntityFrameworkCore;
 using ReminderApp.Application;
 using ReminderApp.Infrastructure;
+using ReminderApp.Infrastructure.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +18,8 @@ builder.Services.AddInfrastructureServices(builder.Configuration);
 builder.Services.AddApplicationServices();
 
 var app = builder.Build();
+// Apply migrations at runtime
+//app.ApplyMigrations();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -27,7 +31,6 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
-// Use Hangfire dashboard (optional)
 app.UseHangfireDashboard("/hangfire");
 app.MapControllers();
 

@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Salam123
+    networks:
+      - my-app-network
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlvolume:/var/opt/mssql
+
+    
+
+    
+  dotnet-api:
+    build:
+      context: .
+      dockerfile: ReminderApp.WebApi/Dockerfile
+    container_name: reminderapi-project-container
+    networks:
+      - my-app-network
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+    env_file:
+      - .env
+    depends_on:
+      - sqlserver
+    entrypoint: >
+      sh -c "sleep 10 && dotnet ReminderApp.WebAPI.dll"
+
+
+networks:
+  my-app-network:
+    driver: bridge  
+
+
+volumes:
+  sqlvolume:
