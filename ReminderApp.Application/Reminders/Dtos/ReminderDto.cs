@@ -12,7 +12,7 @@ namespace ReminderApp.Application.Reminders.Dtos
         public Guid Id { get; set; }
         public string To { get; set; }
         public string Content { get; set; }
-        public DateTime SendAt { get; set; }
+        public DateTimeOffset SendAt { get; set; }
         public ReminderMethodType MethodType { get; set; }
     }
 }

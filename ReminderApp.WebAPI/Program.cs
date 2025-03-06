@@ -19,7 +19,7 @@ builder.Services.AddApplicationServices();
 
 var app = builder.Build();
 // Apply migrations at runtime
-//app.ApplyMigrations();
+app.ApplyMigrations();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

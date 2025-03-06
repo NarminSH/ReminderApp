@@ -2,6 +2,7 @@
 using MediatR;
 using ReminderApp.Application.Reminders.Dtos;
 using ReminderApp.Application.Repositories;
+using ReminderApp.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
