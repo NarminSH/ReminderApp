@@ -7,7 +7,7 @@ using ReminderApp.Infrastructure.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.WebHost.UseUrls("http://0.0.0.0:8080"); // Ensure the correct port is used
-
+builder.WebHost.UseUrls("http://0.0.0.0:8081");
 
 // Add services to the container.
 builder.Services.AddControllers();
