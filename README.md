@@ -40,47 +40,43 @@ This is a RESTful API built with ASP.NET Core for scheduling reminders via email
 1. Clone the repository  
    ```sh
    git clone https://github.com/NarminSH/ReminderApp.git
-cd ReminderApp
+   cd ReminderApp
 
 🛠️ Configuration
 Set up environment variables:
 
-ConnectionStrings__DefaultConnection=Server=localhost;Database=ReminderDb;User Id=sa;Password=your_password; or this step you can do in appsettings.json
-SMTP__Host=smtp.example.com
-SMTP__Port=587
-SMTP__Username=your_email@example.com
-SMTP__Password=your_password
-TelegramBot__Token=your_telegram_bot_token
+TELEGRAM_BOT_TOKEN
+REMINDERAPP_EMAIL_LOGIN
+REMINDERAPP_EMAIL_PASSCODE
+SMTP_USE_SSL=true
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
 
 
-Apply database migrations:
+✅ *Apply database migrations:*
 
 dotnet ef database update
 
-Run the API:
+✅ *Run the API:*
 
 dotnet run
 
-Docker Support
+✅ *Docker Support*
 
 To run the project in a Docker container:
 
 docker-compose up --build
 
 
----
-
 ### **📝 API Endpoints**
 ```md
-## API Endpoints
-
-| Method | Endpoint            | Description                  |
-|--------|---------------------|------------------------------|
-| POST   | /api/reminders      | Create a new reminder       |
-| GET    | /api/reminders      | Get all reminders           |
-
-
-
+   ## API Endpoints
+   
+   | Method | Endpoint            | Description                  |
+   |--------|---------------------|------------------------------|
+   | POST   | /api/reminders      | Create a new reminder       |
+   | GET    | /api/reminders      | Get all reminders           |
+```
 
 🤝 Contributing
 Contributions are welcome! Please follow these steps:
@@ -92,5 +88,4 @@ Push the branch.
 Open a pull request.
 
 📝 License
-
-This project is licensed under the MIT License.
+This project is licensed under the MIT License. See the LICENSE file for details.
