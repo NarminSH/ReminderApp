@@ -46,10 +46,15 @@ This is a RESTful API built with ASP.NET Core for scheduling reminders via email
 Set up environment variables:
 
 TELEGRAM_BOT_TOKEN
+
 REMINDERAPP_EMAIL_LOGIN
+
 REMINDERAPP_EMAIL_PASSCODE
+
 SMTP_USE_SSL=true
+
 SMTP_HOST=smtp.gmail.com
+
 SMTP_PORT=587
 
 
