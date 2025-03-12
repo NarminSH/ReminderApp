@@ -1,36 +1,28 @@
-Reminder Scheduling API
+# Reminder Scheduling API 📅 
 
 This is a RESTful API built with ASP.NET Core for scheduling reminders via email or Telegram. It allows users to create, update, delete, and retrieve reminders, ensuring that notifications are sent at the exact time specified.
 
-Features
+## Features
 
-CRUD Operations for reminders
+✅ CRUD Operations for reminders
+✅ Email & Telegram Notifications
+✅ Scheduling System to ensure reminders are sent on time
+✅ Validation & Exception Handling
+✅ Background Task Processing using Hangfire
+✅ Docker support  
 
-Email & Telegram Notifications
 
-Scheduling System to ensure reminders are sent on time
 
-Validation & Exception Handling
+## Tech Stack
+- **Backend:** .NET 6, ASP.NET Core
+- **Database:** SQL Server
+- **Architecture:** Clean Architecture, CQRS, Repository Pattern, Factory Pattern, Unit of Work
+- **Background Jobs:** Hangfire
+- **Notifications:** SMTP (Email), Telegram Bot
+- **Containerization:** Docker with Docker Compose
 
-Background Task Processing using Hangfire
 
-Tech Stack
-
-Backend: ASP.NET Core (.NET 6) with Clean Architecture
-
-Database: SQL Server
-
-Patterns: CQRS, MediatR, Repository Pattern, Factory Pattern, Unit of Work
-
-Email Server: SMTP
-
-Messaging: Telegram Bot
-
-Background Jobs: Hangfire
-
-Containerization: Docker with Docker Compose
-
-Installation
+🚀 Installation
 
 Prerequisites
 
