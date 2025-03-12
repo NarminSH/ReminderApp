@@ -5,10 +5,15 @@ This is a RESTful API built with ASP.NET Core for scheduling reminders via email
 ## Features
 
 ✅ CRUD Operations for reminders
+
 ✅ Email & Telegram Notifications
+
 ✅ Scheduling System to ensure reminders are sent on time
+
 ✅ Validation & Exception Handling
+
 ✅ Background Task Processing using Hangfire
+
 ✅ Docker support  
 
 
@@ -24,26 +29,29 @@ This is a RESTful API built with ASP.NET Core for scheduling reminders via email
 
 🚀 Installation
 
-Prerequisites
+- .NET 6 SDK
+- SQL Server
+- Docker (Optional)
 
-.NET 6
 
-SQL Server
+🔹 Steps
 
-Docker (optional for containerization)
-
-Setup
-
-Clone the repository:
-
-git clone https://github.com/NarminSH/ReminderApp.git
+## Installation
+1. Clone the repository  
+   ```sh
+   git clone https://github.com/NarminSH/ReminderApp.git
 cd ReminderApp
 
-Configure the database connection string in appsettings.json:
+🛠️ Configuration
+Set up environment variables:
 
-"ConnectionStrings": {
-    "DefaultConnection": "Server=localhost;Database=reminderdb;User Id=youruser;Password=yourpassword;"
-}
+ConnectionStrings__DefaultConnection=Server=localhost;Database=ReminderDb;User Id=sa;Password=your_password; or this step you can do in appsettings.json
+SMTP__Host=smtp.example.com
+SMTP__Port=587
+SMTP__Username=your_email@example.com
+SMTP__Password=your_password
+TelegramBot__Token=your_telegram_bot_token
+
 
 Apply database migrations:
 
@@ -59,30 +67,30 @@ To run the project in a Docker container:
 
 docker-compose up --build
 
-API Endpoints
 
-Reminders
+---
 
-GET /api/reminders - Get all reminders
+### **📝 API Endpoints**
+```md
+## API Endpoints
 
-POST /api/reminders - Create a new reminder
+| Method | Endpoint            | Description                  |
+|--------|---------------------|------------------------------|
+| POST   | /api/reminders      | Create a new reminder       |
+| GET    | /api/reminders      | Get all reminders           |
 
-Environment Variables
 
-TELEGRAM_BOT_TOKEN: API token for the Telegram bot
 
-SMTP_SERVER: SMTP server for email notifications
 
-SMTP_PORT: Port for SMTP
+🤝 Contributing
+Contributions are welcome! Please follow these steps:
 
-SMTP_USER: Email username
+Fork the repository.
+Create a new branch (feature/your-feature).
+Commit your changes.
+Push the branch.
+Open a pull request.
 
-SMTP_PASSWORD: Email password
-
-Contributing
-
-Feel free to submit issues or pull requests.
-
-License
+📝 License
 
 This project is licensed under the MIT License.
